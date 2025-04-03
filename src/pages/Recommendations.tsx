@@ -5,64 +5,151 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Lightbulb, Droplets, Wind, Factory, TreePine, AlertTriangle } from 'lucide-react';
+import { Lightbulb, Droplets, Wind, Factory, TreePine, AlertTriangle, Thermometer, Sun } from 'lucide-react';
 
-// Mock data for demonstration purposes
+// Mock data for demonstration purposes with Indian states
 const stateRecommendations = {
-  Alabama: {
+  Maharashtra: {
     issues: [
       { id: 1, title: 'Frequent Flooding', severity: 'high', icon: <Droplets className="h-5 w-5" /> },
-      { id: 2, title: 'Air Quality Concerns', severity: 'medium', icon: <Wind className="h-5 w-5" /> },
+      { id: 2, title: 'Air Pollution', severity: 'high', icon: <Factory className="h-5 w-5" /> },
       { id: 3, title: 'Deforestation', severity: 'medium', icon: <TreePine className="h-5 w-5" /> },
     ],
     personal: [
-      { id: 1, title: 'Install Rain Barrels', description: 'Collect rainwater to reduce runoff and conserve water for gardens and lawns.' },
-      { id: 2, title: 'Support Local Reforestation', description: 'Join or donate to local tree planting initiatives to restore natural habitats.' },
-      { id: 3, title: 'Use Energy Efficient Appliances', description: 'Replace old appliances with Energy Star certified models to reduce carbon footprint.' },
-      { id: 4, title: 'Create Rain Gardens', description: 'Design landscape features that absorb runoff and reduce flooding impact.' },
+      { id: 1, title: 'Install Rain Barrels', description: 'Collect rainwater to reduce runoff and conserve water during non-monsoon periods.' },
+      { id: 2, title: 'Use Public Transport', description: 'Reduce personal vehicle usage to decrease air pollution in urban areas.' },
+      { id: 3, title: 'Support Local Reforestation', description: 'Join or donate to Western Ghats tree planting initiatives to restore natural habitats.' },
+      { id: 4, title: 'Create Urban Gardens', description: 'Convert available space into small gardens to improve urban ecosystems.' },
     ],
     community: [
-      { id: 1, title: 'Flood Management Programs', description: 'Community-wide flood prevention systems including improved drainage and wetland restoration.' },
-      { id: 2, title: 'Clean Air Initiatives', description: 'Implement stricter emissions testing and encourage public transportation use.' },
-      { id: 3, title: 'Green Space Development', description: 'Convert unused urban areas into parks and community gardens to improve air quality.' },
+      { id: 1, title: 'Urban Flood Management', description: 'Develop community-wide drainage systems and implement early warning mechanisms.' },
+      { id: 2, title: 'Clean Air Initiatives', description: 'Organize community air quality monitoring and implement vehicle-free days.' },
+      { id: 3, title: 'Green Space Development', description: 'Convert unused urban areas into parks and community gardens.' },
     ],
     policy: [
-      { id: 1, title: 'Flood Zone Regulations', description: 'Update building codes to account for increased flood risks and changing weather patterns.' },
-      { id: 2, title: 'Industrial Emissions Standards', description: 'Implement stricter controls on industrial emissions to improve regional air quality.' },
-      { id: 3, title: 'Forest Conservation Laws', description: 'Strengthen legal protections for forests and encourage sustainable forestry practices.' },
+      { id: 1, title: 'Flood Zone Regulations', description: 'Update building codes in coastal areas and implement stricter development guidelines.' },
+      { id: 2, title: 'Industrial Emissions Standards', description: 'Enforce stricter controls on industrial emissions in Mumbai-Pune industrial corridor.' },
+      { id: 3, title: 'Western Ghats Protection', description: 'Strengthen legal protections for the Western Ghats and enforce conservation laws.' },
     ]
   },
-  California: {
+  Delhi: {
     issues: [
-      { id: 1, title: 'Drought Conditions', severity: 'high', icon: <Droplets className="h-5 w-5" /> },
-      { id: 2, title: 'Wildfire Risk', severity: 'high', icon: <AlertTriangle className="h-5 w-5" /> },
-      { id: 3, title: 'Air Pollution', severity: 'medium', icon: <Factory className="h-5 w-5" /> },
+      { id: 1, title: 'Severe Air Pollution', severity: 'high', icon: <Factory className="h-5 w-5" /> },
+      { id: 2, title: 'Water Scarcity', severity: 'high', icon: <Droplets className="h-5 w-5" /> },
+      { id: 3, title: 'Urban Heat Island', severity: 'medium', icon: <Thermometer className="h-5 w-5" /> },
     ],
     personal: [
-      { id: 1, title: 'Install Water-Efficient Fixtures', description: 'Replace standard fixtures with low-flow alternatives to reduce water consumption.' },
-      { id: 2, title: 'Create Defensible Space', description: 'Maintain vegetation around your home to reduce wildfire spread risk.' },
-      { id: 3, title: 'Transition to Electric Vehicles', description: 'Consider electric or hybrid vehicles to reduce emissions and air pollution.' },
-      { id: 4, title: 'Xeriscape Your Garden', description: 'Use drought-resistant plants and efficient irrigation to conserve water.' },
+      { id: 1, title: 'Use Air Purifiers', description: 'Install air purifiers in homes, especially during winter months when pollution peaks.' },
+      { id: 2, title: 'Water Conservation', description: 'Install water-efficient fixtures and practice rainwater harvesting.' },
+      { id: 3, title: 'Use Public Transport', description: 'Utilize Delhi Metro and public buses to reduce vehicle emissions.' },
+      { id: 4, title: 'Terrace Gardening', description: 'Create rooftop gardens to help reduce heat island effect and improve air quality.' },
     ],
     community: [
-      { id: 1, title: 'Community Water Recycling', description: 'Implement gray water systems and water recycling programs at community levels.' },
-      { id: 2, title: 'Wildfire Preparedness Plans', description: 'Develop evacuation routes and community wildfire safety zones.' },
-      { id: 3, title: 'Public Transportation Expansion', description: 'Invest in electric buses and light rail to reduce vehicle emissions.' },
+      { id: 1, title: 'Car-Free Sundays', description: 'Implement car-free zones in neighborhoods to reduce emissions and promote community engagement.' },
+      { id: 2, title: 'Community Water Management', description: 'Develop community rainwater harvesting systems and water recycling programs.' },
+      { id: 3, title: 'Urban Forestation', description: 'Plant trees along roads and in public spaces to combat heat island effect and air pollution.' },
     ],
     policy: [
-      { id: 1, title: 'Water Conservation Legislation', description: 'Implement comprehensive water usage regulations and incentives for conservation.' },
-      { id: 2, title: 'Forest Management Reforms', description: 'Update policies for controlled burns and forest thinning to reduce wildfire risk.' },
-      { id: 3, title: 'Zero-Emission Vehicle Mandates', description: 'Accelerate transition to electric vehicles through incentives and regulations.' },
+      { id: 1, title: 'Strict Vehicle Emission Standards', description: 'Enforce tougher emission norms and accelerate transition to electric public transport.' },
+      { id: 2, title: 'Industrial Relocation', description: 'Relocate high-polluting industries outside the city limits.' },
+      { id: 3, title: 'Water Resource Management', description: 'Implement comprehensive Yamuna river restoration and protection policies.' },
+    ]
+  },
+  Kerala: {
+    issues: [
+      { id: 1, title: 'Coastal Erosion', severity: 'high', icon: <Droplets className="h-5 w-5" /> },
+      { id: 2, title: 'Monsoon Flooding', severity: 'high', icon: <AlertTriangle className="h-5 w-5" /> },
+      { id: 3, title: 'Biodiversity Loss', severity: 'medium', icon: <TreePine className="h-5 w-5" /> },
+    ],
+    personal: [
+      { id: 1, title: 'Rainwater Harvesting', description: 'Install rainwater collection systems to manage heavy rainfall and conserve water.' },
+      { id: 2, title: 'Restore Mangroves', description: 'Participate in local mangrove restoration efforts to protect coastal areas.' },
+      { id: 3, title: 'Sustainable Fishing', description: 'Support sustainable fishing practices to preserve marine ecosystems.' },
+      { id: 4, title: 'Eco-friendly Home Design', description: 'Implement traditional Kerala architecture principles for climate-resilient housing.' },
+    ],
+    community: [
+      { id: 1, title: 'Early Warning Systems', description: 'Develop community-based flood and landslide warning networks.' },
+      { id: 2, title: 'Wetland Conservation', description: 'Restore and protect local wetlands that act as natural flood barriers.' },
+      { id: 3, title: 'Sustainable Tourism', description: 'Promote ecotourism that protects rather than harms natural ecosystems.' },
+    ],
+    policy: [
+      { id: 1, title: 'Coastal Zone Management', description: 'Implement science-based coastal management policies to address erosion.' },
+      { id: 2, title: 'Forest Conservation', description: 'Strengthen protections for the Western Ghats and enforce anti-deforestation laws.' },
+      { id: 3, title: 'Climate-Resilient Agriculture', description: 'Develop policies supporting traditional, climate-adapted agricultural practices.' },
+    ]
+  },
+  Tamil_Nadu: {
+    issues: [
+      { id: 1, title: 'Water Scarcity', severity: 'high', icon: <Droplets className="h-5 w-5" /> },
+      { id: 2, title: 'Coastal Vulnerability', severity: 'high', icon: <AlertTriangle className="h-5 w-5" /> },
+      { id: 3, title: 'Heat Waves', severity: 'medium', icon: <Sun className="h-5 w-5" /> },
+    ],
+    personal: [
+      { id: 1, title: 'Water Conservation', description: 'Install low-flow fixtures and practice greywater recycling for gardening.' },
+      { id: 2, title: 'Heat-Resistant Housing', description: 'Use traditional cooling techniques and heat-reflective materials in home construction.' },
+      { id: 3, title: 'Energy Efficiency', description: 'Install solar panels and energy-efficient appliances to reduce carbon footprint.' },
+      { id: 4, title: 'Native Gardening', description: 'Plant drought-resistant native species that require less water.' },
+    ],
+    community: [
+      { id: 1, title: 'Lake Restoration', description: 'Participate in local water body cleanup and restoration initiatives.' },
+      { id: 2, title: 'Community Rainwater Harvesting', description: 'Implement neighborhood-scale rainwater collection systems.' },
+      { id: 3, title: 'Coastal Restoration', description: 'Support mangrove and coral reef restoration projects along the coast.' },
+    ],
+    policy: [
+      { id: 1, title: 'Water Management Reform', description: 'Implement comprehensive water management policies addressing overexploitation.' },
+      { id: 2, title: 'Coastal Infrastructure', description: 'Develop climate-resilient coastal infrastructure and early warning systems.' },
+      { id: 3, title: 'Renewable Energy Transition', description: 'Accelerate transition to wind and solar energy to reduce emissions.' },
     ]
   }
 };
 
-const states = ['Alabama', 'California'];
+// List of all Indian states and union territories
+const states = [
+  'Andhra Pradesh',
+  'Arunachal Pradesh',
+  'Assam',
+  'Bihar',
+  'Chhattisgarh',
+  'Goa',
+  'Gujarat',
+  'Haryana',
+  'Himachal Pradesh',
+  'Jharkhand',
+  'Karnataka',
+  'Kerala',
+  'Madhya Pradesh',
+  'Maharashtra',
+  'Manipur',
+  'Meghalaya',
+  'Mizoram',
+  'Nagaland',
+  'Odisha',
+  'Punjab',
+  'Rajasthan',
+  'Sikkim',
+  'Tamil Nadu',
+  'Tamil_Nadu', // Included for mock data compatibility
+  'Telangana',
+  'Tripura',
+  'Uttar Pradesh',
+  'Uttarakhand',
+  'West Bengal',
+  'Andaman and Nicobar Islands',
+  'Chandigarh',
+  'Dadra and Nagar Haveli and Daman and Diu',
+  'Delhi',
+  'Jammu and Kashmir',
+  'Ladakh',
+  'Lakshadweep',
+  'Puducherry'
+];
 
 const RecommendationsPage: React.FC = () => {
-  const [selectedState, setSelectedState] = useState<string>('California');
+  const [selectedState, setSelectedState] = useState<string>('Maharashtra');
 
-  const stateData = stateRecommendations[selectedState as keyof typeof stateRecommendations];
+  // If the selected state doesn't have data, provide a fallback
+  const stateData = stateRecommendations[selectedState as keyof typeof stateRecommendations] || 
+    stateRecommendations['Maharashtra'];
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {
@@ -80,7 +167,7 @@ const RecommendationsPage: React.FC = () => {
   return (
     <Layout>
       <div className="container py-8">
-        <h1 className="climate-heading mb-8">Climate Recommendations</h1>
+        <h1 className="climate-heading mb-8">Climate Recommendations for Indian States</h1>
         
         <div className="max-w-md mx-auto mb-8">
           <label className="block mb-2 text-sm font-medium text-foreground">Select State</label>
@@ -88,7 +175,7 @@ const RecommendationsPage: React.FC = () => {
             <SelectTrigger>
               <SelectValue placeholder="Select a state" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="max-h-[300px]">
               {states.map((state) => (
                 <SelectItem key={state} value={state}>{state}</SelectItem>
               ))}
