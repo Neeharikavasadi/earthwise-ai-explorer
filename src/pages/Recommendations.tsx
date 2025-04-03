@@ -5,13 +5,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
-import { Lightbulb, Drop, Wind, Factory, TreePine, AlertTriangle } from 'lucide-react';
+import { Lightbulb, Droplets, Wind, Factory, TreePine, AlertTriangle } from 'lucide-react';
 
 // Mock data for demonstration purposes
 const stateRecommendations = {
   Alabama: {
     issues: [
-      { id: 1, title: 'Frequent Flooding', severity: 'high', icon: <Drop className="h-5 w-5" /> },
+      { id: 1, title: 'Frequent Flooding', severity: 'high', icon: <Droplets className="h-5 w-5" /> },
       { id: 2, title: 'Air Quality Concerns', severity: 'medium', icon: <Wind className="h-5 w-5" /> },
       { id: 3, title: 'Deforestation', severity: 'medium', icon: <TreePine className="h-5 w-5" /> },
     ],
@@ -34,7 +34,7 @@ const stateRecommendations = {
   },
   California: {
     issues: [
-      { id: 1, title: 'Drought Conditions', severity: 'high', icon: <Drop className="h-5 w-5" /> },
+      { id: 1, title: 'Drought Conditions', severity: 'high', icon: <Droplets className="h-5 w-5" /> },
       { id: 2, title: 'Wildfire Risk', severity: 'high', icon: <AlertTriangle className="h-5 w-5" /> },
       { id: 3, title: 'Air Pollution', severity: 'medium', icon: <Factory className="h-5 w-5" /> },
     ],
