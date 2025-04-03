@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,33 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Adding climate theme colors
+				climate: {
+					blue: {
+						light: '#E3F2FD',
+						DEFAULT: '#2196F3',
+						dark: '#0D47A1'
+					},
+					green: {
+						light: '#E8F5E9',
+						DEFAULT: '#4CAF50',
+						dark: '#1B5E20'
+					},
+					earth: {
+						brown: '#5D4037',
+						beige: '#D7CCC8'
+					},
+					cloud: {
+						light: '#ECEFF1',
+						DEFAULT: '#B0BEC5',
+						dark: '#455A64'
+					},
+					alert: {
+						red: '#F44336',
+						orange: '#FF9800',
+						yellow: '#FFEB3B'
+					}
 				}
 			},
 			borderRadius: {
@@ -84,11 +112,31 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' }
+				},
+				'fade-out': {
+					'0%': { opacity: '1' },
+					'100%': { opacity: '0' }
+				},
+				'slide-in': {
+					'0%': { transform: 'translateX(-100%)' },
+					'100%': { transform: 'translateX(0)' }
+				},
+				'slide-out': {
+					'0%': { transform: 'translateX(0)' },
+					'100%': { transform: 'translateX(-100%)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.3s ease-out',
+				'fade-out': 'fade-out 0.3s ease-out',
+				'slide-in': 'slide-in 0.3s ease-out',
+				'slide-out': 'slide-out 0.3s ease-out'
 			}
 		}
 	},
